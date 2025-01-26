@@ -1,0 +1,116 @@
+
+.title-banner{
+    width: 99vw;
+    height: 100px;
+    background-color: rgb(1, 149, 223);
+    padding: 10px;
+}
+    
+.title-page{    
+    text-align: center;
+    color: black;
+}
+
+.game-information{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: solid;
+    border-color: black;
+    border-width: 5px;
+    margin: 20px;
+}
+
+.start_container_{
+    width: 250px;
+    height: 150px;
+    margin-right: 50px;
+    text-align: center;
+}
+
+.punteggio-container{
+    background-color:rgb(100, 82, 82);
+    text-align: center;
+    font-size: 30px;
+    color: red;
+    border-radius: 5px;
+    margin-right: 50px;
+    margin-left: 50px;
+    width: 250px;
+    height: 150px;
+}
+
+.vite-container{
+    background-color:rgb(100, 82, 82);
+    text-align: center;
+    font-size: 30px;
+    color: red;
+    border-radius: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 250px;
+    height: 150px;
+}
+
+.timer-container{
+    background-color:rgb(100, 82, 82);
+    text-align: center;
+    font-size: 30px;
+    color: red;
+    border-radius: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 250px;
+    height: 150px;
+}
+
+.start_container{
+    width: 250px;
+    height: 150px;
+    margin-left: 50px;
+    text-align: center;
+}
+
+.container-1{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.box{
+    background-color: rgb(255, 0, 0);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    border: solid;
+    border-color: black;
+    border-width:4px;
+}
+
+
+
+.inizio-gioco{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.inizio-button{
+    width: 200px;
+    height: 50px;
+}
+
+.deselected{
+    background-color: rgb(70, 70, 70);
+}
+
+.selected{
+    background-color: rgb(0, 208, 45);
+}
