@@ -75,13 +75,7 @@
 
 
     <script>
-        //2. creare un ciclo con una funzione -->
-        //3. creare una funzione che faccia attivare (per ora cambiare colore) un box in maniera casuale con un tempo causale
-        //4. creare una funzione che tenga conto del tempo rimasto
-        //5. creare una funzione che tenga conto dei punti raggiunti
-        //6. creare una funzione che tenga conto della vita rimanente 
-        //7. creare una funzione per i risultati finali alla fine del timer di gioco
-        //8. sistemare la grafica 
+    
 
         let box = document.querySelectorAll(".box");
         let start = document.querySelector(".inizio-button");
@@ -119,8 +113,12 @@
             setTimeout(game, 0)
         }
 
-        function gameOver() {
-            // Stoppi tutti i timer
+        function gameOver(timer,timer2) {
+            start_timer_1.innerHTML = "Game Over!!";
+            start_timer_2.innerHTML = "Game Over!!";
+            clearInterval(timer,timer2);
+            box_selected.removeEventListener("click", gestisciClick)
+            box_selected.classList.remove("selected");
         }
 
         function game() {
@@ -130,35 +128,64 @@
 
             timer = setInterval(function () {
                 time_left = time_left - 1
-                // controllo se arrivo a zero e in caso dò il game over
+                if(time_left<=0){
+                    setTimeout(gameOver(timer, timer2), 500);
+                }
+                
                 // clear interval di tutti i timer presenti
                 document.querySelector(".timer").innerHTML = time_left
             }, 1000)
 
+            
+            let timer2 = setInterval(casualSelection, 1000)
 
             /* QUESTO lo dobbiamo fare ogni tot secondi */
-            const randomInteger = Math.floor(Math.random() * box.length);
-            console.log(randomInteger)
-            box_selected = box[randomInteger];
-            box_selected.classList.add("selected");
-            function gestisciClick() {
-                if (!GameOver) {
-                    punteggio++;
-                    punteggio_.innerHTML = punteggio;
+            function casualSelection(){
+
+                if(box_selected){
+                    box_selected.removeEventListener("click", gestisciClick())
                     box_selected.classList.remove("selected");
-
-                } else {
-                    vite.innerHTML = vite_.value - 1;
                 }
+                
+                const randomInteger = Math.floor(Math.random() * box.length);
+                console.log(randomInteger)
+                box_selected = box[randomInteger];
+                box_selected.classList.add("selected");
+                
+
+                box_selected.addEventListener("click", gestisciClick)
+                function gestisciClick() {
+                    if (!GameOver) {
+                        if(!box_selected.onclick){
+                            punteggio++;
+                            punteggio_.innerHTML = punteggio;
+                            box_selected.classList.remove("selected");
+                            box_selected.removeEventListener("click", gestisciClick);
+                        }else{
+                            console.log("errore, hai cliccato il box sbagliato")
+                            box_selected.removeEventListener("click", gestisciClick )
+                            box_selected.classList.remove("selected");
+                            vite.innerHTML = vite_.value - 1;
+                            // controllare se hai cliccato l'elemento giusto
+                           
+                        }
+                        
+                    } else {
+                        vite.innerHTML = vite_.value - 1;
+                        box_selected.removeEventListener("click", gestisciClick);
+                    }
+
+                    
+                }
+                
             }
+                
+            
 
-            box_selected.addEventListener("click", gestisciClick)
-            /* dobbiamo anche RIMUOVERE l'event listener dopo N secondi */
+            
+            
 
-            setTimeout(function () {
-                box_selected.classList.remove("selected");
-                box_selected.removeEventListener("click", gestisciClick)
-            }, 1500)
+            
 
             /*
             do{
